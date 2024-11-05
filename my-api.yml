@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-api
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: my-api
+    image: stevanbayley/checkout:checkout2024
+    resources: {}
+    ports:
+    - containerPort: 80
+    
+# kubectl exec [pod-name] -c [container-name] -it sh

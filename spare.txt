@@ -1,0 +1,155 @@
+ //List<Item> _items;
+
+        //public  Task RemoveAllItems(List<Item> _items)
+        //{
+        //    _items.Clear();
+        //    return Task.FromResult<object>(0);
+
+        //}
+
+        //public Task RemoveItem(string itemId, List<Item> _items)
+        //{
+
+        //    var item = _items.FirstOrDefault(x => x.ItemId == itemId);
+
+        //    if (item != null)
+        //    {
+        //       _items.Remove(item);
+        //    }
+
+        //    return Task.FromResult<object>(null);
+        //}
+
+        //public Task AddItem(Item item, List<Item> _items)
+        //{
+            
+        //    if (item != null)
+        //    {
+        //        _items.Add(item);
+        //    }
+
+        //    return Task.FromResult<object>(0);
+        //}
+
+
+        //public CheckoutTotals GetTotals(List<Item> _items)
+        //{
+
+        //    CheckoutTotals totals = new CheckoutTotals();
+
+        //    var totalPrice = _items.Sum(a => a.AppliedPrice);
+
+        //    var totalSavings = _items.Sum(a => a.AppliedDiscount);
+
+        //    totals.TotalSavings = totalSavings;
+        //    totals.Total = totalPrice;
+
+
+        //    return totals;
+
+        //}
+
+        //public Mock<IItemsRepository> SetupItemsRepositoryMock(Mock<IItemsRepository> _mockItemsRepository, List<Item> _items)
+        //{
+        //    _mockItemsRepository.Setup(m => m.Add(It.IsAny<Item>())).Returns((Item item) => AddItem(item, _items));
+        //    _mockItemsRepository.Setup(m => m.GetAllItems()).ReturnsAsync(_items);
+        //    _mockItemsRepository.Setup(m => m.GetItem(It.IsAny<string>())).Returns((string y) => Task.FromResult<Item>(_items.FirstOrDefault(x => x.ItemId == y)));
+        //    _mockItemsRepository.Setup(m => m.GetItemCount(It.IsAny<string>())).Returns((string y) => _items.Where(x => x.ItemId == y).Count());
+        //    _mockItemsRepository.Setup(m => m.RemoveItem(It.IsAny<string>())).Returns((string y) => RemoveItem(y, _items));
+        //    _mockItemsRepository.Setup(m => m.RemoveAllItems()).Returns(RemoveAllItems(_items));
+        //    _mockItemsRepository.Setup(m => m.GetTotals()).Returns(GetTotals(_items));
+
+        //    return _mockItemsRepository;
+        //}
+
+
+        ----------------
+
+        //public static class PricingRuleEndpoints
+//{
+//	public static void MapPricingRuleEndpoints (this IEndpointRouteBuilder routes)
+//    {
+//        var group = routes.MapGroup("/api/PricingRule").WithTags(nameof(PricingRule));
+
+//        group.MapGet("/", async (PricingRulesDBContext db) =>
+//        {
+//            return await db.PricingRules.ToListAsync();
+//        })
+//        .WithName("GetAllPricingRules")
+//        .WithOpenApi();
+
+//        group.MapGet("/{id}", async Task<Results<Ok<PricingRule>, NotFound>> (int pricingruleid, PricingRulesDBContext db) =>
+//        {
+//            return await db.PricingRules.AsNoTracking()
+//                .FirstOrDefaultAsync(model => model.PricingRuleId == pricingruleid)
+//                is PricingRule model
+//                    ? TypedResults.Ok(model)
+//                    : TypedResults.NotFound();
+//        })
+//        .WithName("GetPricingRuleById")
+//        .WithOpenApi();
+
+//        group.MapPut("/{id}", async Task<Results<Ok, NotFound>> (int pricingruleid, PricingRule pricingRule, PricingRulesDBContext db) =>
+//        {
+//            var affected = await db.PricingRules
+//                .Where(model => model.PricingRuleId == pricingruleid)
+//                .ExecuteUpdateAsync(setters => setters
+//                  .SetProperty(m => m.PricingRuleId, pricingRule.PricingRuleId)
+//                  .SetProperty(m => m.ItemId, pricingRule.ItemId)
+//                  .SetProperty(m => m.Price, pricingRule.Price)
+//                  .SetProperty(m => m.SpecialGroupPrice, pricingRule.SpecialGroupPrice)
+//                  .SetProperty(m => m.SpecialUnitAmount, pricingRule.SpecialUnitAmount)
+//                  .SetProperty(m => m.SpecialUnitDescription, pricingRule.SpecialUnitDescription)
+//                  );
+//            return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
+//        })
+//        .WithName("UpdatePricingRule")
+//        .WithOpenApi();
+
+//        group.MapPost("/", async (PricingRule pricingRule, PricingRulesDBContext db) =>
+//        {
+//            db.PricingRules.Add(pricingRule);
+//            await db.SaveChangesAsync();
+//            return TypedResults.Created($"/api/PricingRule/{pricingRule.PricingRuleId}",pricingRule);
+//        })
+//        .WithName("CreatePricingRule")
+//        .WithOpenApi();
+
+//        group.MapDelete("/{id}", async Task<Results<Ok, NotFound>> (int pricingruleid, PricingRulesDBContext db) =>
+//        {
+//            var affected = await db.PricingRules
+//                .Where(model => model.PricingRuleId == pricingruleid)
+//                .ExecuteDeleteAsync();
+//            return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
+//        })
+//        .WithName("DeletePricingRule")
+//        .WithOpenApi();
+//    }
+//}}
+
+
+//docker username - stevanbayley 2024 <f>
+//docker image build -t stevanbayley/todo:todo2023 .
+//docker image ls
+//docker container run -d --name backend -p 80:80 stevanbayley/todo:todo2023
+//docker container ls
+//docker container ls -a
+//docker container stop backend
+
+
+//docker username - stevanbayley 2024 <f>
+//docker image build -t stevanbayley/checkout:checkout2024 .
+//docker image ls
+//docker container run -d --name checkoutapi -p 80:8080 stevanbayley/checkout:checkout2024
+//docker container ls
+//docker container ls -a
+//docker container stop backend
+
+//docker container run -d --name dockertestapi -p 8080:8080 dockertestapi:latest
+docker image build -t stevanbayley/checkout:checkout2024 .
+
+docker container run -d --name checkoutapi -p 32776:8080 -p 32777:8081 stevanbayley/checkout:checkout2024
+docker container run -d --name checkoutapi -p 32776:8080 -p 32777:8081 checkoutapi:latest
+
+docker image build -t stevanbayley/checkout:checkout1 .
+docker container run -d --name checkoutapi -p 32776:8080 -p 32777:8081 stevanbayley/checkout:checkout1
